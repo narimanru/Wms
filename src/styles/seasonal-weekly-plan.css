@@ -1,0 +1,442 @@
+/* Seasonal Weekly Plan */
+
+.seasonal-weekly-plan {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+/* Header */
+.seasonal-weekly-plan__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.seasonal-weekly-plan__back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.seasonal-weekly-plan__back-btn:hover {
+  background: #f9fafb;
+  color: #1f2937;
+}
+
+.seasonal-weekly-plan__header-content {
+  flex: 1;
+}
+
+.seasonal-weekly-plan__title-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.seasonal-weekly-plan__title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+}
+
+.seasonal-weekly-plan__subtitle {
+  font-size: 15px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.seasonal-weekly-plan__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  white-space: nowrap;
+}
+
+.seasonal-weekly-plan__btn--primary {
+  background: #10a37f;
+  color: #fff;
+}
+
+.seasonal-weekly-plan__btn--primary:hover {
+  background: #0d8f6f;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 163, 127, 0.2);
+}
+
+/* Controls */
+.seasonal-weekly-plan__controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.seasonal-weekly-plan__legend {
+  display: flex;
+  gap: 24px;
+}
+
+.seasonal-weekly-plan__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.seasonal-weekly-plan__legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+}
+
+.seasonal-weekly-plan__filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+}
+
+.seasonal-weekly-plan__filter-select {
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f2937;
+  cursor: pointer;
+}
+
+/* Timeline */
+.seasonal-weekly-plan__timeline {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  overflow-x: auto;
+}
+
+.seasonal-weekly-plan__section {
+  margin-bottom: 24px;
+}
+
+.seasonal-weekly-plan__section:last-child {
+  margin-bottom: 0;
+}
+
+.seasonal-weekly-plan__section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: #f9fafb;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 12px;
+}
+
+.seasonal-weekly-plan__track {
+  display: flex;
+  gap: 12px;
+  min-height: 60px;
+  align-items: center;
+  border-bottom: 1px solid #f3f4f6;
+  padding: 8px 0;
+}
+
+.seasonal-weekly-plan__track:last-child {
+  border-bottom: none;
+}
+
+.seasonal-weekly-plan__track-label {
+  width: 180px;
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  padding-right: 16px;
+}
+
+.seasonal-weekly-plan__weeks {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.seasonal-weekly-plan__week-header {
+  width: 80px;
+  flex-shrink: 0;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #6b7280;
+  padding: 8px 0;
+}
+
+.seasonal-weekly-plan__week-cell {
+  width: 80px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  position: relative;
+}
+
+/* Production Blocks */
+.seasonal-weekly-plan__block {
+  width: 100%;
+  padding: 8px 6px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.seasonal-weekly-plan__block:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.seasonal-weekly-plan__block--start {
+  opacity: 0.3;
+}
+
+.seasonal-weekly-plan__block--production {
+  opacity: 0.8;
+}
+
+.seasonal-weekly-plan__block--complete {
+  opacity: 1;
+}
+
+.seasonal-weekly-plan__block-value {
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.seasonal-weekly-plan__marker {
+  font-size: 14px;
+  color: #10a37f;
+}
+
+/* Shipments */
+.seasonal-weekly-plan__shipment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 6px;
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #10a37f;
+  width: 100%;
+}
+
+.seasonal-weekly-plan__shipment:hover {
+  background: #dcfce7;
+  transform: scale(1.05);
+}
+
+/* KIZ */
+.seasonal-weekly-plan__kiz {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 6px;
+  background: #faf5ff;
+  border: 1px solid #d8b4fe;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #8b5cf6;
+  width: 100%;
+}
+
+.seasonal-weekly-plan__kiz:hover {
+  background: #f3e8ff;
+  transform: scale(1.05);
+}
+
+/* Constraints */
+.seasonal-weekly-plan__constraints {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.seasonal-weekly-plan__constraints-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 16px 0;
+}
+
+.seasonal-weekly-plan__constraints-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.seasonal-weekly-plan__constraint {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.seasonal-weekly-plan__constraint--critical {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+.seasonal-weekly-plan__constraint--warning {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+}
+
+.seasonal-weekly-plan__constraint:hover {
+  transform: translateX(4px);
+}
+
+.seasonal-weekly-plan__constraint-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.seasonal-weekly-plan__constraint--critical .seasonal-weekly-plan__constraint-icon {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.seasonal-weekly-plan__constraint--warning .seasonal-weekly-plan__constraint-icon {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.seasonal-weekly-plan__constraint-message {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+  line-height: 1.5;
+}
+
+.seasonal-weekly-plan__constraint-btn {
+  padding: 8px 16px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f2937;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.seasonal-weekly-plan__constraint-btn:hover {
+  background: #f9fafb;
+  border-color: #10a37f;
+  color: #10a37f;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .seasonal-weekly-plan {
+    padding: 20px;
+  }
+
+  .seasonal-weekly-plan__header {
+    flex-wrap: wrap;
+  }
+
+  .seasonal-weekly-plan__controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .seasonal-weekly-plan__legend {
+    justify-content: space-between;
+  }
+
+  .seasonal-weekly-plan__track-label {
+    width: 120px;
+  }
+
+  .seasonal-weekly-plan__week-header,
+  .seasonal-weekly-plan__week-cell {
+    width: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .seasonal-weekly-plan__title {
+    font-size: 24px;
+  }
+
+  .seasonal-weekly-plan__timeline {
+    padding: 16px;
+  }
+
+  .seasonal-weekly-plan__week-header,
+  .seasonal-weekly-plan__week-cell {
+    width: 50px;
+  }
+
+  .seasonal-weekly-plan__constraint {
+    flex-wrap: wrap;
+  }
+
+  .seasonal-weekly-plan__constraint-btn {
+    width: 100%;
+  }
+}

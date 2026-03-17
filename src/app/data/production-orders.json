@@ -1,0 +1,421 @@
+{
+  "orders": [
+    {
+      "id": "PO-2026-00041",
+      "clientName": "Kamilek",
+      "season": "Весна 2026",
+      "deadline": "2026-03-25",
+      "totalQuantity": 1050,
+      "status": "new",
+      "paymentStatus": "awaiting",
+      "priority": "urgent",
+      "createdAt": "2026-03-01",
+      "acceptedAt": null,
+      "currentStage": null,
+      "requirements": {
+        "kizPrinting": "seller",
+        "packaging": ["polybag", "tag", "sticker"],
+        "clientComments": "Строго соблюдать сроки. Весенняя коллекция критична для запуска."
+      },
+      "items": [
+        {
+          "sku": "PNTS-RIB-001",
+          "name": "Брюки классические палаццо",
+          "category": "Брюки",
+          "sizes": [
+            {
+              "size": "S",
+              "rusSize": "42",
+              "plan": 300,
+              "fact": 0,
+              "deviation": 0,
+              "deviationReason": null,
+              "status": "pending",
+              "comment": ""
+            },
+            {
+              "size": "M",
+              "rusSize": "44",
+              "plan": 400,
+              "fact": 0,
+              "deviation": 0,
+              "deviationReason": null,
+              "status": "pending",
+              "comment": ""
+            },
+            {
+              "size": "L",
+              "rusSize": "46",
+              "plan": 300,
+              "fact": 0,
+              "deviation": 0,
+              "deviationReason": null,
+              "status": "pending",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "sku": "TOP-BASIC-001",
+          "name": "Топ базовый",
+          "category": "Топы",
+          "sizes": [
+            {
+              "size": "S",
+              "rusSize": "42",
+              "plan": 200,
+              "fact": 0,
+              "deviation": 0,
+              "deviationReason": null,
+              "status": "pending",
+              "comment": ""
+            },
+            {
+              "size": "M",
+              "rusSize": "44",
+              "plan": 180,
+              "fact": 0,
+              "deviation": 0,
+              "deviationReason": null,
+              "status": "pending",
+              "comment": ""
+            },
+            {
+              "size": "L",
+              "rusSize": "46",
+              "plan": 150,
+              "fact": 0,
+              "deviation": 0,
+              "deviationReason": null,
+              "status": "pending",
+              "comment": ""
+            }
+          ]
+        }
+      ],
+      "workflow": [
+        {
+          "id": "accepted",
+          "name": "Принято",
+          "status": "not_started",
+          "startDate": null,
+          "endDate": null,
+          "responsible": null,
+          "comment": "",
+          "attachments": []
+        },
+        {
+          "id": "cutting",
+          "name": "Крой",
+          "status": "not_started",
+          "startDate": null,
+          "endDate": null,
+          "responsible": null,
+          "comment": "",
+          "attachments": []
+        },
+        {
+          "id": "sewing",
+          "name": "Пошив",
+          "status": "not_started",
+          "startDate": null,
+          "endDate": null,
+          "responsible": null,
+          "comment": "",
+          "attachments": []
+        },
+        {
+          "id": "pressing",
+          "name": "ВТО",
+          "status": "not_started",
+          "startDate": null,
+          "endDate": null,
+          "responsible": null,
+          "comment": "",
+          "attachments": []
+        },
+        {
+          "id": "qc",
+          "name": "ОТК",
+          "status": "not_started",
+          "startDate": null,
+          "endDate": null,
+          "responsible": null,
+          "comment": "",
+          "attachments": []
+        },
+        {
+          "id": "packaging",
+          "name": "Упаковка",
+          "status": "not_started",
+          "startDate": null,
+          "endDate": null,
+          "responsible": null,
+          "comment": "",
+          "attachments": []
+        },
+        {
+          "id": "ready",
+          "name": "Готово к отгрузке",
+          "status": "not_started",
+          "startDate": null,
+          "endDate": null,
+          "responsible": null,
+          "comment": "",
+          "attachments": []
+        },
+        {
+          "id": "shipped",
+          "name": "Отгружено",
+          "status": "not_started",
+          "startDate": null,
+          "endDate": null,
+          "responsible": null,
+          "comment": "",
+          "attachments": []
+        }
+      ],
+      "payments": {
+        "prepayment": {
+          "status": "awaiting",
+          "receivedDate": null
+        },
+        "balance": {
+          "status": "not_issued",
+          "receivedDate": null
+        }
+      },
+      "issues": []
+    },
+    {
+      "id": "PO-2026-00039",
+      "clientName": "Kamilek",
+      "season": "Весна 2026",
+      "deadline": "2026-03-18",
+      "totalQuantity": 600,
+      "status": "in_progress",
+      "paymentStatus": "partial",
+      "priority": "normal",
+      "createdAt": "2026-02-20",
+      "acceptedAt": "2026-02-21",
+      "currentStage": "sewing",
+      "requirements": {
+        "kizPrinting": "contractor",
+        "packaging": ["polybag", "tag"],
+        "clientComments": ""
+      },
+      "items": [
+        {
+          "sku": "DRESS-001",
+          "name": "Платье весеннее",
+          "category": "Платья",
+          "sizes": [
+            {
+              "size": "S",
+              "rusSize": "42",
+              "plan": 200,
+              "fact": 195,
+              "deviation": -5,
+              "deviationReason": "fabric_shortage",
+              "status": "done",
+              "comment": "Немного не хватило ткани"
+            },
+            {
+              "size": "M",
+              "rusSize": "44",
+              "plan": 250,
+              "fact": 250,
+              "deviation": 0,
+              "deviationReason": null,
+              "status": "in_progress",
+              "comment": ""
+            },
+            {
+              "size": "L",
+              "rusSize": "46",
+              "plan": 150,
+              "fact": 0,
+              "deviation": 0,
+              "deviationReason": null,
+              "status": "pending",
+              "comment": ""
+            }
+          ]
+        }
+      ],
+      "workflow": [
+        {
+          "id": "accepted",
+          "name": "Принято",
+          "status": "done",
+          "startDate": "2026-02-21",
+          "endDate": "2026-02-21",
+          "responsible": "Иванов П.",
+          "comment": "Заказ принят, материалы проверены",
+          "attachments": []
+        },
+        {
+          "id": "cutting",
+          "name": "Крой",
+          "status": "done",
+          "startDate": "2026-02-22",
+          "endDate": "2026-02-25",
+          "responsible": "Петров С.",
+          "comment": "",
+          "attachments": []
+        },
+        {
+          "id": "sewing",
+          "name": "Пошив",
+          "status": "in_progress",
+          "startDate": "2026-02-26",
+          "endDate": null,
+          "responsible": "Сидорова А.",
+          "comment": "В процессе пошива",
+          "attachments": []
+        },
+        {
+          "id": "pressing",
+          "name": "ВТО",
+          "status": "not_started",
+          "startDate": null,
+          "endDate": null,
+          "responsible": null,
+          "comment": "",
+          "attachments": []
+        },
+        {
+          "id": "qc",
+          "name": "ОТК",
+          "status": "not_started",
+          "startDate": null,
+          "endDate": null,
+          "responsible": null,
+          "comment": "",
+          "attachments": []
+        },
+        {
+          "id": "packaging",
+          "name": "Упаковка",
+          "status": "not_started",
+          "startDate": null,
+          "endDate": null,
+          "responsible": null,
+          "comment": "",
+          "attachments": []
+        },
+        {
+          "id": "ready",
+          "name": "Готово к отгрузке",
+          "status": "not_started",
+          "startDate": null,
+          "endDate": null,
+          "responsible": null,
+          "comment": "",
+          "attachments": []
+        },
+        {
+          "id": "shipped",
+          "name": "Отгружено",
+          "status": "not_started",
+          "startDate": null,
+          "endDate": null,
+          "responsible": null,
+          "comment": "",
+          "attachments": []
+        }
+      ],
+      "payments": {
+        "prepayment": {
+          "status": "received",
+          "receivedDate": "2026-02-22"
+        },
+        "balance": {
+          "status": "awaiting",
+          "receivedDate": null
+        }
+      },
+      "issues": [
+        {
+          "id": "ISS-001",
+          "type": "fabric_shortage",
+          "sku": "DRESS-001",
+          "size": "S",
+          "quantity": 5,
+          "solution": "reduce_volume",
+          "comment": "Не хватило ткани на 5 единиц размера S",
+          "status": "resolved",
+          "createdAt": "2026-02-28",
+          "resolvedAt": "2026-03-01",
+          "attachments": []
+        }
+      ]
+    }
+  ],
+  "deviationReasons": [
+    {
+      "value": "fabric_shortage",
+      "label": "Недостаток ткани"
+    },
+    {
+      "value": "defects",
+      "label": "Брак/дефекты"
+    },
+    {
+      "value": "shrinkage",
+      "label": "Усадка/перекос"
+    },
+    {
+      "value": "no_accessories",
+      "label": "Нет фурнитуры"
+    },
+    {
+      "value": "material_replacement",
+      "label": "Замена материала (по согласованию)"
+    },
+    {
+      "value": "other",
+      "label": "Другое"
+    }
+  ],
+  "issueTypes": [
+    {
+      "value": "fabric",
+      "label": "Ткань"
+    },
+    {
+      "value": "defects",
+      "label": "Брак"
+    },
+    {
+      "value": "deadlines",
+      "label": "Сроки"
+    },
+    {
+      "value": "accessories",
+      "label": "Фурнитура"
+    },
+    {
+      "value": "other",
+      "label": "Другое"
+    }
+  ],
+  "solutions": [
+    {
+      "value": "extend_deadline",
+      "label": "Сдвинуть срок"
+    },
+    {
+      "value": "reduce_volume",
+      "label": "Снизить объём"
+    },
+    {
+      "value": "redistribute_sizes",
+      "label": "Перераспределить по размерам"
+    },
+    {
+      "value": "request_materials",
+      "label": "Запросить доп. ткань/фурнитуру"
+    }
+  ]
+}

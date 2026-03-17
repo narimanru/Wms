@@ -1,0 +1,427 @@
+{
+  "products": [
+    {
+      "id": "19",
+      "name": "Брюки классические палаццо с высокой посадкой",
+      "color": "чёрный",
+      "wbArticle": "447263640",
+      "vendorArticle": "Bruki-bez-zashipov-black",
+      "brand": "Kamilek",
+      "category": "Одежда → Брюки",
+      "composition": "полиэстер 62%, вискоза 33%, эластан 5%",
+      "needsMarking": true,
+      "image": "https://images.unsplash.com/photo-1768803968211-a7f04e1effd2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYWxhenpvJTIwcGFudHMlMjBibGFjayUyMGZhc2hpb258ZW58MXx8fHwxNzczMDc2NTkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "tags": ["новинка", "топ"],
+      "sizes": [
+        {
+          "barcode": "2044497815189",
+          "rusSize": "42",
+          "size": "42",
+          "kiz": {
+            "available": 1465,
+            "assigned": 1275,
+            "used": 48
+          }
+        },
+        {
+          "barcode": "2044497815202",
+          "rusSize": "46",
+          "size": "46",
+          "kiz": {
+            "available": 2483,
+            "assigned": 2091,
+            "used": 112
+          }
+        },
+        {
+          "barcode": "2044497815219",
+          "rusSize": "48",
+          "size": "48",
+          "kiz": {
+            "available": 1708,
+            "assigned": 1445,
+            "used": 76
+          }
+        },
+        {
+          "barcode": "2044497815226",
+          "rusSize": "50",
+          "size": "50",
+          "kiz": {
+            "available": 1284,
+            "assigned": 1131,
+            "used": 55
+          }
+        },
+        {
+          "barcode": "2044498130731",
+          "rusSize": "40",
+          "size": "40",
+          "kiz": {
+            "available": 753,
+            "assigned": 684,
+            "used": 19
+          }
+        },
+        {
+          "barcode": "2044497815196",
+          "rusSize": "44",
+          "size": "44",
+          "kiz": {
+            "available": 2273,
+            "assigned": 1849,
+            "used": 96
+          }
+        }
+      ],
+      "kizStats": {
+        "inCirculation": 8364,
+        "inUPD": 312,
+        "rejected": 8,
+        "retired": 48
+      },
+      "recentActivity": [
+        {
+          "date": "09.03",
+          "time": "14:22",
+          "action": "Импорт КИЗ (PDF)",
+          "quantity": 2000
+        },
+        {
+          "date": "09.03",
+          "time": "15:10",
+          "action": "Назначено на размер 46",
+          "quantity": 600
+        },
+        {
+          "date": "09.03",
+          "time": "16:05",
+          "action": "Печать этикеток",
+          "quantity": 120,
+          "note": "фулфилмент"
+        },
+        {
+          "date": "10.03",
+          "time": "11:40",
+          "action": "УПД обработан: отклонено",
+          "quantity": 8,
+          "note": "КИЗ"
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "name": "Брюки классические прямого кроя",
+      "color": "синий",
+      "wbArticle": "447263782",
+      "vendorArticle": "Bruki-pryamye-blue",
+      "brand": "Kamilek",
+      "category": "Одежда → Брюки",
+      "composition": "хлопок 95%, эластан 5%",
+      "needsMarking": true,
+      "image": "https://images.unsplash.com/photo-1766994063815-e4762e991c1f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjbGFzc2ljJTIwdHJvdXNlcnMlMjBibHVlJTIwd29tYW58ZW58MXx8fHwxNzczMDc2NTkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "tags": ["продвигаем"],
+      "sizes": [
+        {
+          "barcode": "2044497820123",
+          "rusSize": "42",
+          "size": "42",
+          "kiz": {
+            "available": 845,
+            "assigned": 720,
+            "used": 35
+          }
+        },
+        {
+          "barcode": "2044497820140",
+          "rusSize": "44",
+          "size": "44",
+          "kiz": {
+            "available": 1120,
+            "assigned": 890,
+            "used": 48
+          }
+        },
+        {
+          "barcode": "2044497820157",
+          "rusSize": "46",
+          "size": "46",
+          "kiz": {
+            "available": 965,
+            "assigned": 805,
+            "used": 42
+          }
+        },
+        {
+          "barcode": "2044497820164",
+          "rusSize": "48",
+          "size": "48",
+          "kiz": {
+            "available": 720,
+            "assigned": 615,
+            "used": 28
+          }
+        }
+      ],
+      "kizStats": {
+        "inCirculation": 3650,
+        "inUPD": 145,
+        "rejected": 3,
+        "retired": 28
+      },
+      "recentActivity": [
+        {
+          "date": "09.03",
+          "time": "09:15",
+          "action": "Импорт КИЗ (Excel)",
+          "quantity": 1200
+        },
+        {
+          "date": "09.03",
+          "time": "10:30",
+          "action": "Назначено на размер 44",
+          "quantity": 350
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "name": "Блузка женская белая классическая",
+      "color": "белый",
+      "wbArticle": "447264015",
+      "vendorArticle": "Bluzka-white-classic",
+      "brand": "Kamilek",
+      "category": "Одежда → Блузки",
+      "composition": "вискоза 70%, полиэстер 30%",
+      "needsMarking": true,
+      "image": "https://images.unsplash.com/photo-1595272251257-1bbe120103d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMGJsb3VzZSUyMHdvbWFuJTIwZmFzaGlvbnxlbnwxfHx8fDE3NzMwNzY1OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "tags": ["новинка", "топ"],
+      "sizes": [
+        {
+          "barcode": "2044497830456",
+          "rusSize": "XS",
+          "size": "40",
+          "kiz": {
+            "available": 420,
+            "assigned": 380,
+            "used": 15
+          }
+        },
+        {
+          "barcode": "2044497830463",
+          "rusSize": "S",
+          "size": "42",
+          "kiz": {
+            "available": 980,
+            "assigned": 845,
+            "used": 52
+          }
+        },
+        {
+          "barcode": "2044497830470",
+          "rusSize": "M",
+          "size": "44",
+          "kiz": {
+            "available": 1150,
+            "assigned": 995,
+            "used": 68
+          }
+        },
+        {
+          "barcode": "2044497830487",
+          "rusSize": "L",
+          "size": "46",
+          "kiz": {
+            "available": 865,
+            "assigned": 740,
+            "used": 41
+          }
+        },
+        {
+          "barcode": "2044497830494",
+          "rusSize": "XL",
+          "size": "48",
+          "kiz": {
+            "available": 540,
+            "assigned": 465,
+            "used": 22
+          }
+        }
+      ],
+      "kizStats": {
+        "inCirculation": 3955,
+        "inUPD": 185,
+        "rejected": 5,
+        "retired": 22
+      },
+      "recentActivity": [
+        {
+          "date": "08.03",
+          "time": "16:45",
+          "action": "Импорт КИЗ (PDF)",
+          "quantity": 1500
+        },
+        {
+          "date": "09.03",
+          "time": "11:20",
+          "action": "Назначено на размер M",
+          "quantity": 450
+        },
+        {
+          "date": "09.03",
+          "time": "14:15",
+          "action": "Печать этикеток",
+          "quantity": 98,
+          "note": "фулфилмент"
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "name": "Свитер женский красный оверсайз",
+      "color": "красный",
+      "wbArticle": "447264287",
+      "vendorArticle": "Sviter-red-oversize",
+      "brand": "Kamilek",
+      "category": "Одежда → Свитеры",
+      "composition": "акрил 80%, шерсть 20%",
+      "needsMarking": true,
+      "image": "https://images.unsplash.com/photo-1558377235-01c7b856561a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWQlMjBzd2VhdGVyJTIwd29tYW4lMjBmYXNoaW9ufGVufDF8fHx8MTc3MzA3NjU5Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "tags": ["акция", "сливаем"],
+      "sizes": [
+        {
+          "barcode": "2044497840789",
+          "rusSize": "S",
+          "size": "S",
+          "kiz": {
+            "available": 285,
+            "assigned": 245,
+            "used": 18
+          }
+        },
+        {
+          "barcode": "2044497840796",
+          "rusSize": "M",
+          "size": "M",
+          "kiz": {
+            "available": 512,
+            "assigned": 438,
+            "used": 34
+          }
+        },
+        {
+          "barcode": "2044497840802",
+          "rusSize": "L",
+          "size": "L",
+          "kiz": {
+            "available": 395,
+            "assigned": 325,
+            "used": 26
+          }
+        }
+      ],
+      "kizStats": {
+        "inCirculation": 1192,
+        "inUPD": 78,
+        "rejected": 2,
+        "retired": 18
+      },
+      "recentActivity": [
+        {
+          "date": "07.03",
+          "time": "13:30",
+          "action": "Импорт КИЗ (PDF)",
+          "quantity": 800
+        },
+        {
+          "date": "08.03",
+          "time": "09:45",
+          "action": "Назначено на размер M",
+          "quantity": 200
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "name": "Юбка миди плиссированная",
+      "color": "бежевый",
+      "wbArticle": "447264521",
+      "vendorArticle": "Yubka-midi-beige",
+      "brand": "Kamilek",
+      "category": "Одежда → Юбки",
+      "composition": "полиэстер 100%",
+      "needsMarking": true,
+      "image": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=500&fit=crop",
+      "tags": ["продвигаем"],
+      "sizes": [
+        {
+          "barcode": "2044497850123",
+          "rusSize": "42",
+          "size": "XS",
+          "kiz": {
+            "available": 320,
+            "assigned": 275,
+            "used": 12
+          }
+        },
+        {
+          "barcode": "2044497850130",
+          "rusSize": "44",
+          "size": "S",
+          "kiz": {
+            "available": 685,
+            "assigned": 590,
+            "used": 38
+          }
+        },
+        {
+          "barcode": "2044497850147",
+          "rusSize": "46",
+          "size": "M",
+          "kiz": {
+            "available": 745,
+            "assigned": 640,
+            "used": 42
+          }
+        },
+        {
+          "barcode": "2044497850154",
+          "rusSize": "48",
+          "size": "L",
+          "kiz": {
+            "available": 495,
+            "assigned": 425,
+            "used": 28
+          }
+        }
+      ],
+      "kizStats": {
+        "inCirculation": 2245,
+        "inUPD": 98,
+        "rejected": 4,
+        "retired": 28
+      },
+      "recentActivity": [
+        {
+          "date": "08.03",
+          "time": "10:15",
+          "action": "Импорт КИЗ (Excel)",
+          "quantity": 950
+        },
+        {
+          "date": "09.03",
+          "time": "08:30",
+          "action": "Назначено на размер M",
+          "quantity": 280
+        }
+      ]
+    }
+  ],
+  "availableTags": [
+    "акция",
+    "новинка",
+    "продвигаем",
+    "сливаем",
+    "топ"
+  ]
+}

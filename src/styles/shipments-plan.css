@@ -1,0 +1,393 @@
+/* Shipments Plan */
+@import './ai-pages.css';
+
+.shipments-plan {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+/* Header */
+.shipments-plan__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.shipments-plan__back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.shipments-plan__back:hover {
+  background: #f9fafb;
+  border-color: #10a37f;
+  color: #10a37f;
+}
+
+.shipments-plan__header-content {
+  flex: 1;
+}
+
+.shipments-plan__title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.shipments-plan__title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.shipments-plan__subtitle {
+  font-size: 15px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Hint */
+.shipments-plan__hint {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 10px;
+  color: #92400e;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+/* Content */
+.shipments-plan__content {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.shipments-plan__table-wrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Table */
+.shipments-plan__table-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.shipments-plan__table-container {
+  overflow-x: auto;
+}
+
+.shipments-plan__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.shipments-plan__table thead {
+  background: #f9fafb;
+}
+
+.shipments-plan__table th {
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 600;
+  color: #6b7280;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #e5e7eb;
+  white-space: nowrap;
+}
+
+.shipments-plan__table td {
+  padding: 16px;
+  color: #1f2937;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.shipments-plan__table tbody tr {
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.shipments-plan__table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.shipments-plan__table-row--selected {
+  background: #f0fdf4 !important;
+  border-left: 3px solid #10a37f;
+}
+
+.shipments-plan__table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.shipments-plan__sku {
+  font-weight: 600;
+  color: #1f2937;
+  white-space: nowrap;
+}
+
+.shipments-plan__size {
+  display: inline-block;
+  padding: 4px 10px;
+  background: #f3f4f6;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.shipments-plan__warehouse {
+  font-size: 13px;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+.shipments-plan__stock {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.shipments-plan__days {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.shipments-plan__days--high {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.shipments-plan__days--medium {
+  background: #fffbeb;
+  color: #d97706;
+}
+
+.shipments-plan__days--low {
+  background: #f0fdf4;
+  color: #10a37f;
+}
+
+.shipments-plan__qty {
+  font-weight: 600;
+  color: #10a37f;
+}
+
+.shipments-plan__date {
+  font-size: 13px;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+.shipments-plan__priority {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.shipments-plan__priority--high {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.shipments-plan__priority--medium {
+  background: #fffbeb;
+  color: #d97706;
+}
+
+.shipments-plan__priority--low {
+  background: #f0fdf4;
+  color: #10a37f;
+}
+
+.shipments-plan__action-btn {
+  padding: 6px 12px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1f2937;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.shipments-plan__action-btn:hover {
+  background: #10a37f;
+  border-color: #10a37f;
+  color: #fff;
+}
+
+/* Sidebar */
+.shipments-plan__sidebar {
+  width: 360px;
+  flex-shrink: 0;
+}
+
+.shipments-plan__sidebar-card {
+  padding: 24px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  position: sticky;
+  top: 32px;
+}
+
+.shipments-plan__sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.shipments-plan__sidebar-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.shipments-plan__sidebar-section {
+  margin-bottom: 16px;
+}
+
+.shipments-plan__sidebar-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.shipments-plan__sidebar-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.shipments-plan__sidebar-divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 20px 0;
+}
+
+.shipments-plan__sidebar-recommendation {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.shipments-plan__sidebar-rec-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #92400e;
+  margin-bottom: 4px;
+}
+
+.shipments-plan__sidebar-rec-text {
+  font-size: 13px;
+  color: #92400e;
+  line-height: 1.5;
+}
+
+.shipments-plan__sidebar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 20px;
+  background: #10a37f;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.shipments-plan__sidebar-btn:hover {
+  background: #0d8f6f;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 163, 127, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .shipments-plan__content {
+    flex-direction: column;
+  }
+
+  .shipments-plan__sidebar {
+    width: 100%;
+    position: static;
+  }
+
+  .shipments-plan__sidebar-card {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .shipments-plan {
+    padding: 20px;
+  }
+
+  .shipments-plan__header {
+    flex-direction: column;
+  }
+
+  .shipments-plan__title {
+    font-size: 22px;
+  }
+
+  .shipments-plan__table-container {
+    overflow-x: scroll;
+  }
+
+  .shipments-plan__table {
+    min-width: 1000px;
+  }
+}
