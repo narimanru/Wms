@@ -578,7 +578,7 @@ function ProductsInventory() {
     
     // Check if multiple sizes selected and target has different number of sizes
     if (transferSource.sizes.length > 1 && transferSource.sizes.length !== product.sizes.length) {
-      setTransferError(`Невозможно перенести ${transferSource.sizes.length} размеров в товар с ${product.sizes.length} размерами. Для п��реноса между товарами с разным количеством размеров переносите размеры по одному.`);
+      setTransferError(`Невозможно перенести ${transferSource.sizes.length} размеров в товар с ${product.sizes.length} размерами. Для переноса между товарами с разным количеством размеров переносите размеры по одному.`);
       return;
     }
     
@@ -1098,7 +1098,7 @@ function ProductsInventory() {
                     <div className="fw-tooltip">
                       <div className="fw-tooltip__text">
                         Коды, выведенные из оборота (например: проданы, списаны или утилизированы).
-                        Исполь��овать такие КИЗы повторно нельзя.
+                        Использовать такие КИЗы повторно нельзя.
                       </div>
                     </div>
                   </div>
@@ -1512,7 +1512,7 @@ function ProductsInventory() {
                       className="fw-distribute-evenly-btn"
                       onClick={handleDistributeEvenly}
                     >
-                      Расп��еделить равномерно
+                      Распределить равномерно
                     </button>
                   </div>
 
@@ -1677,7 +1677,7 @@ function ProductsInventory() {
                     <span className="fw-transfer-source__size">Размер: {internalTransferModal.sourceSize.size}</span>
                   </div>
                   <div className="fw-transfer-source__available">
-                    Доступно ��ля переноса: <strong>{getTotalInternalAvailable()}</strong> КИЗов
+                    Доступно для переноса: <strong>{getTotalInternalAvailable()}</strong> КИЗов
                   </div>
                 </div>
               </div>

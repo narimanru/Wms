@@ -1,13 +1,13 @@
 /* Dashboard Styles */
 .fw-dashboard {
   min-height: 100vh;
-  background: #fff;
+  background: var(--color-bg-card);
 }
 
 /* Header */
 .fw-dashboard__header {
-  background: #fff;
-  border-bottom: 1px solid #e5e7eb;
+  background: var(--color-bg-card);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .fw-dashboard__header-content {
@@ -21,17 +21,17 @@
 }
 
 .fw-dashboard__title {
-  font-size: 32px;
-  font-weight: 600;
-  color: #1f2937;
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
   margin-bottom: 6px;
   letter-spacing: -0.5px;
 }
 
 .fw-dashboard__subtitle {
-  font-size: 15px;
-  color: #6b7280;
-  font-weight: 400;
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-normal);
 }
 
 .fw-dashboard__user {
@@ -43,25 +43,25 @@
 .fw-dashboard__user-avatar {
   width: 40px;
   height: 40px;
-  border-radius: 10px;
-  background: #1f2937;
+  border-radius: var(--radius-md);
+  background: var(--color-text-primary);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
-  font-size: 15px;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
 }
 
 .fw-dashboard__user-name {
-  font-size: 14px;
-  font-weight: 500;
-  color: #1f2937;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
 }
 
 .fw-dashboard__user-role {
-  font-size: 13px;
-  color: #6b7280;
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
 }
 
 /* Content */
@@ -80,10 +80,10 @@
 }
 
 .fw-stat-card {
-  background: #fff;
-  border-radius: 12px;
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
   padding: 24px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--color-border);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -91,8 +91,8 @@
 }
 
 .fw-stat-card:hover {
-  border-color: #d1d5db;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-md);
 }
 
 .fw-stat-card__icon {

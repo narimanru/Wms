@@ -142,7 +142,11 @@ export default function RepricerHistory() {
   };
 
   const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
+    try {
+      navigator.clipboard.writeText(text);
+    } catch (err) {
+      console.log('Clipboard not available');
+    }
   };
 
   const filteredHistory = mockHistory.filter(item => {
@@ -326,15 +330,32 @@ export default function RepricerHistory() {
 
                     {/* Товар */}
                     <td className="px-6 py-4">
-                      <div className="max-w-xs">
-                        <div className="text-[13px] text-[#111827] font-medium mb-1 line-clamp-1">
-                          {action.productName}
+                      <div className="flex items-center gap-3">
+                        {/* Изображение товара */}
+                        <div className="w-12 h-12 bg-[#f3f4f6] rounded-md flex-shrink-0 overflow-hidden">
+                          <div className="w-full h-full bg-gradient-to-br from-[#e5e7eb] to-[#d1d5db]"></div>
                         </div>
-                        <div className="text-[12px] text-[#6b7280]">
-                          NMId: {action.nmId}
-                        </div>
-                        <div className="text-[11px] text-[#9ca3af] mt-0.5">
-                          SKU: {action.sku}
+                        
+                        {/* Информация о товаре */}
+                        <div className="flex-1 min-w-0">
+                          <div className="text-[13px] text-[#111827] font-medium mb-1.5 line-clamp-1">
+                            {action.productName}
+                          </div>
+                          <div className="flex items-center gap-2 text-[12px] text-[#6b7280]">
+                            <span>Брюки</span>
+                            <span>•</span>
+                            <span className="font-mono">{action.nmId}</span>
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                copyToClipboard(action.nmId);
+                              }}
+                              className="p-0.5 hover:bg-[#f3f4f6] rounded transition-colors"
+                              title="Копировать nmId"
+                            >
+                              <Copy className="w-3 h-3 text-[#9ca3af]" />
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </td>

@@ -1,0 +1,78 @@
+/**
+ * FASTWMS Design System
+ * OpenAI / Premium SaaS Style
+ */
+
+:root {
+  /* Primary Colors */
+  --color-primary: #7367F0;
+  --color-primary-hover: #6355D9;
+  --color-primary-light: rgba(115, 103, 240, 0.1);
+  
+  /* Success */
+  --color-success: #28C76F;
+  --color-success-light: #d1fae5;
+  
+  /* Error */
+  --color-error: #EA5455;
+  --color-error-light: #fee2e2;
+  
+  /* Warning */
+  --color-warning: #FF9F43;
+  --color-warning-light: #fef3c7;
+  
+  /* Neutral */
+  --color-neutral: #82868B;
+  
+  /* Backgrounds */
+  --color-bg-base: #F8F9FB;
+  --color-bg-card: #FFFFFF;
+  --color-bg-hover: #F3F4F6;
+  
+  /* Borders */
+  --color-border: #E5E7EB;
+  --color-border-hover: #D1D5DB;
+  
+  /* Text */
+  --color-text-primary: #000000;
+  --color-text-secondary: #000000;
+  --color-text-tertiary: #000000;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-2xl: 32px;
+  
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 13px;
+  --font-size-md: 14px;
+  --font-size-lg: 15px;
+  --font-size-xl: 16px;
+  --font-size-2xl: 18px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 28px;
+  --font-size-5xl: 32px;
+  --font-size-6xl: 36px;
+  
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+}

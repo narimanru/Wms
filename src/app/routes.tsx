@@ -36,6 +36,11 @@ import CreateProductionOrder from './pages/CreateProductionOrder';
 import ProductionOrderDetail from './pages/ProductionOrderDetail';
 import ImportKIZ from './pages/ImportKIZ';
 import RepricerHistory from './pages/RepricerHistory';
+import Repricer from './pages/Repricer';
+import RepricerCreate from './pages/RepricerCreate';
+import RepricerCreateFull from './pages/RepricerCreateFull';
+import KizBank from './pages/KizBank';
+import Kanban from './pages/Kanban';
 import './pages/production/productionHelpers'; // Import helpers to set up globals
 import ProductionOrderDetailPage from './pages/production/ProductionOrderDetailPage';
 import ProductionOrdersList from './pages/production/ProductionOrders';
@@ -51,6 +56,9 @@ import PartnerDashboard from './pages/partners/PartnerDashboard';
 import PartnerClients from './pages/partners/PartnerClients';
 import PartnerEarnings from './pages/partners/PartnerEarnings';
 import PartnerPayouts from './pages/partners/PartnerPayouts';
+import Profile from './pages/Profile';
+import Login from './pages/Login';
+import Logout from './pages/Logout';
 
 export const router = createBrowserRouter([
   {
@@ -102,8 +110,12 @@ export const router = createBrowserRouter([
     element: <Layout><div style={{ padding: '40px', textAlign: 'center' }}>Управление пулами КИЗ (в разработке)</div></Layout>,
   },
   {
+    path: '/kiz-bank',
+    element: <Layout><KizBank /></Layout>,
+  },
+  {
     path: '/import-kiz',
-    element: <ImportKIZ />,
+    element: <Layout><ImportKIZ /></Layout>,
   },
   {
     path: '/ai',
@@ -268,5 +280,40 @@ export const router = createBrowserRouter([
   {
     path: '/repricer/history',
     element: <Layout><RepricerHistory /></Layout>,
+  },
+  // Repricer
+  {
+    path: '/repricer',
+    element: <Layout><Repricer /></Layout>,
+  },
+  // Repricer Create
+  {
+    path: '/repricer/create',
+    element: <Layout><RepricerCreate /></Layout>,
+  },
+  // Repricer Create Full
+  {
+    path: '/repricer/create-full',
+    element: <Layout><RepricerCreateFull /></Layout>,
+  },
+  // Kanban
+  {
+    path: '/kanban',
+    element: <Layout><Kanban /></Layout>,
+  },
+  // Profile
+  {
+    path: '/profile',
+    element: <Layout><Profile /></Layout>,
+  },
+  // Login
+  {
+    path: '/login',
+    element: <Login />,
+  },
+  // Logout
+  {
+    path: '/logout',
+    element: <Logout />,
   },
 ]);

@@ -208,7 +208,7 @@ function AIAnalytics() {
           <div className="ai-analytics__object-select">
             {selectedScenario === 'shipment' && (
               <div className="ai-analytics__form-group">
-                <label className="ai-analytics__label">Постав��а</label>
+                <label className="ai-analytics__label">Поставка</label>
                 <select 
                   className="ai-analytics__select"
                   value={selectedObject}

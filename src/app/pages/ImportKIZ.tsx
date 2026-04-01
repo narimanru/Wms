@@ -244,6 +244,70 @@ function ImportKIZ() {
   const [dontShowAgain, setDontShowAgain] = useState(false);
   const [importSuccess, setImportSuccess] = useState(false);
   const [toast, setToast] = useState<{ message: string; show: boolean }>({ message: '', show: false });
+  const [allFilesProcessed, setAllFilesProcessed] = useState(false);
+  const [availableVoices, setAvailableVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const [selectedVoice, setSelectedVoice] = useState<string>('');
+  const [showVoiceSettings, setShowVoiceSettings] = useState(false);
+  const [voiceEnabled, setVoiceEnabled] = useState(true);
+
+  // Load available voices
+  useEffect(() => {
+    const loadVoices = () => {
+      const voices = window.speechSynthesis.getVoices();
+      // Filter only Russian voices
+      const russianVoices = voices.filter(v => v.lang.startsWith('ru'));
+      setAvailableVoices(russianVoices);
+      
+      // Auto-select first Russian voice
+      if (!selectedVoice && russianVoices.length > 0) {
+        // Try to find Alice voice first, otherwise use first available
+        const aliceVoice = russianVoices.find(v => v.name.toLowerCase().includes('alice') || v.name.toLowerCase().includes('алис'));
+        setSelectedVoice(aliceVoice ? aliceVoice.name : russianVoices[0].name);
+      }
+    };
+
+    loadVoices();
+    
+    // Voices might load asynchronously
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+
+    // Cleanup
+    return () => {
+      if (window.speechSynthesis.onvoiceschanged !== undefined) {
+        window.speechSynthesis.onvoiceschanged = null;
+      }
+    };
+  }, []);
+
+  // Monitor when all files are successfully uploaded
+  useEffect(() => {
+    if (uploadedFiles.length > 0 && uploadedFiles.every(f => f.status === 'success')) {
+      if (!allFilesProcessed) {
+        setAllFilesProcessed(true);
+        // Voice notification for all files completed
+        setTimeout(() => {
+          const fileCount = uploadedFiles.length;
+          const message = fileCount === 1 
+            ? 'Файл успешно загружен' 
+            : `Все файлы успешно загружены. Загружено ${fileCount} ${fileCount === 2 || fileCount === 3 || fileCount === 4 ? 'файла' : 'файлов'}`;
+          speakNotification(message);
+        }, 800);
+      }
+    } else {
+      setAllFilesProcessed(false);
+    }
+  }, [uploadedFiles]);
+
+  // Cleanup speech synthesis on unmount
+  useEffect(() => {
+    return () => {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
 
   const steps = [
     { num: 1, title: 'Загрузка файлов' },
@@ -255,8 +319,13 @@ function ImportKIZ() {
     { num: 7, title: 'Результат' }
   ];
 
-  // Play success sound
+  // Play success sound (only if voice notifications are disabled)
   const playSuccessSound = () => {
+    // Don't play sound if voice notifications are enabled
+    if (voiceEnabled) {
+      return;
+    }
+    
     try {
       const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
       
@@ -293,6 +362,42 @@ function ImportKIZ() {
     setTimeout(() => {
       setToast({ message: '', show: false });
     }, 3000);
+  };
+
+  // Voice notification
+  const speakNotification = (text: string) => {
+    try {
+      // Check if voice is enabled
+      if (!voiceEnabled) return;
+      
+      // Check if speech synthesis is supported
+      if ('speechSynthesis' in window) {
+        // Cancel any ongoing speech
+        window.speechSynthesis.cancel();
+        
+        const utterance = new SpeechSynthesisUtterance(text);
+        
+        // Set Russian language
+        utterance.lang = 'ru-RU';
+        
+        // Configure voice properties
+        utterance.rate = 1.0; // Normal speed
+        utterance.pitch = 1.0; // Normal pitch
+        utterance.volume = 0.8; // 80% volume
+        
+        // Use selected voice
+        if (selectedVoice && availableVoices.length > 0) {
+          const voice = availableVoices.find(v => v.name === selectedVoice);
+          if (voice) {
+            utterance.voice = voice;
+          }
+        }
+        
+        window.speechSynthesis.speak(utterance);
+      }
+    } catch (error) {
+      console.log('Speech synthesis not supported', error);
+    }
   };
 
   // Step 1: File Upload
@@ -351,6 +456,7 @@ function ImportKIZ() {
                 ? fileUpload.file.name.substring(0, 27) + '...' 
                 : fileUpload.file.name;
               showToast(`Файл "${fileName}" успешно обработан`);
+
             }, 1500);
           }, 500);
         }
@@ -375,7 +481,7 @@ function ImportKIZ() {
       },
       {
         gtin: '4607034763121',
-        productName: 'Брюки женски��',
+        productName: 'Брюки женские',
         color: 'Черный',
         size: '42',
         kizCount: 85,
@@ -425,6 +531,15 @@ function ImportKIZ() {
         p.color === firstFile.analyzedData?.color
       );
       setSelectedProduct(matchedProduct || null);
+      
+      // Voice notification based on result
+      setTimeout(() => {
+        if (matchedProduct) {
+          speakNotification('Автоматически найден связанный товар с этими КИЗами');
+        } else {
+          speakNotification('Товар не найден, нужно выбрать товар вручную');
+        }
+      }, 500);
     }
   };
 
@@ -658,6 +773,10 @@ function ImportKIZ() {
   const handleNextStep = () => {
     if (step === 1 && uploadedFiles.length > 0) {
       setStep(2);
+      // Voice notification for step 2
+      setTimeout(() => {
+        speakNotification('Анализируем загруженные файлы и ищем товар в базе');
+      }, 500);
     } else if (step === 2) {
       autoSelectProduct();
       setStep(3);
@@ -894,6 +1013,37 @@ function ImportKIZ() {
           {/* Step 1: File Upload */}
           {step === 1 && (
             <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+              {/* Voice Settings Button */}
+              <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '16px' }}>
+                <button
+                  onClick={() => setShowVoiceSettings(!showVoiceSettings)}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '8px 16px',
+                    background: '#fff',
+                    border: '1px solid #d1d5db',
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                    fontSize: '14px',
+                    color: '#374151',
+                    transition: 'all 0.2s'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = '#7367F0';
+                    e.currentTarget.style.color = '#7367F0';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = '#d1d5db';
+                    e.currentTarget.style.color = '#374151';
+                  }}
+                >
+                  <Sparkles size={16} />
+                  Настройки голоса
+                </button>
+              </div>
+
               <div
                 onDrop={handleFileDrop}
                 onDragOver={(e) => e.preventDefault()}
@@ -1195,20 +1345,7 @@ function ImportKIZ() {
                           🟡 Проверьте товар
                         </span>
                       )}
-                      <span style={{ 
-                        padding: '4px 10px',
-                        borderRadius: '6px',
-                        fontSize: '12px',
-                        fontWeight: 600,
-                        background: 'linear-gradient(135deg, #10a37f 0%, #0d8968 100%)',
-                        color: '#fff',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '4px'
-                      }}>
-                        <Sparkles size={12} />
-                        AI 96%
-                      </span>
+                      
                     </div>
                   </div>
                   
@@ -1286,20 +1423,7 @@ function ImportKIZ() {
                     </div>
 
                     {/* Data from file */}
-                    <div style={{
-                      marginTop: '12px',
-                      paddingTop: '12px',
-                      borderTop: '1px solid #bbf7d0',
-                      fontSize: '12px',
-                      color: '#6b7280'
-                    }}>
-                      <div style={{ fontWeight: 600, marginBottom: '4px', color: '#065f46' }}>
-                        Данные из файла:
-                      </div>
-                      <div>
-                        Брюки женские • 529940427 • Черный • Размеры: 40, 42, 44, 46, 48
-                      </div>
-                    </div>
+                    
                     
                     <div style={{ display: 'flex', gap: '8px', marginTop: '12px' }}>
                       <button
@@ -1339,95 +1463,7 @@ function ImportKIZ() {
                     </div>
                   </div>
 
-                  {/* Similar Products */}
-                  <div>
-                    <h4 style={{ fontSize: '13px', fontWeight: 600, color: '#6b7280', margin: '0 0 12px 0' }}>
-                      Похожие товары (если текущий не подходит)
-                    </h4>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-                      {MOCK_PRODUCTS.filter(p => 
-                        p.category === selectedProduct.category && 
-                        p.id !== selectedProduct.id
-                      ).slice(0, 2).map((product) => (
-                        <div
-                          key={product.id}
-                          style={{
-                            background: '#fff',
-                            border: '1px solid #e5e7eb',
-                            borderRadius: '8px',
-                            padding: '12px',
-                            cursor: 'pointer',
-                            transition: 'all 0.2s'
-                          }}
-                          onMouseOver={(e) => {
-                            e.currentTarget.style.borderColor = '#10a37f';
-                            e.currentTarget.style.boxShadow = '0 0 0 3px rgba(16, 163, 127, 0.1)';
-                          }}
-                          onMouseOut={(e) => {
-                            e.currentTarget.style.borderColor = '#e5e7eb';
-                            e.currentTarget.style.boxShadow = 'none';
-                          }}
-                          onClick={() => {
-                            setSelectedProduct(product);
-                            setShowProductDropdown(false);
-                          }}
-                        >
-                          <div style={{ display: 'flex', gap: '8px', marginBottom: '8px' }}>
-                            {product.photo ? (
-                              <img 
-                                src={product.photo} 
-                                alt={product.name}
-                                style={{
-                                  width: '40px',
-                                  height: '40px',
-                                  objectFit: 'cover',
-                                  borderRadius: '6px',
-                                  flexShrink: 0
-                                }}
-                              />
-                            ) : (
-                              <div style={{
-                                width: '40px',
-                                height: '40px',
-                                background: '#f3f4f6',
-                                borderRadius: '6px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                flexShrink: 0
-                              }}>
-                                <Package size={16} style={{ color: '#9ca3af' }} />
-                              </div>
-                            )}
-                            <div style={{ flex: 1, minWidth: 0 }}>
-                              <div style={{ fontSize: '13px', fontWeight: 600, color: '#111827', marginBottom: '2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                                {product.name}
-                              </div>
-                              <div style={{ fontSize: '11px', color: '#6b7280' }}>
-                                {product.article}
-                              </div>
-                            </div>
-                          </div>
-                          <div style={{ fontSize: '11px', color: '#6b7280', marginBottom: '6px' }}>
-                            {product.color} • {product.category}
-                          </div>
-                          <button style={{
-                            width: '100%',
-                            padding: '6px 12px',
-                            background: '#f9fafb',
-                            border: '1px solid #e5e7eb',
-                            borderRadius: '6px',
-                            fontSize: '12px',
-                            fontWeight: 500,
-                            color: '#374151',
-                            cursor: 'pointer'
-                          }}>
-                            Выбрать
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+
                 </div>
               )}
 
@@ -1783,54 +1819,7 @@ function ImportKIZ() {
                   )}
 
                   {/* Total and Group Type */}
-                  <div style={{
-                    padding: '16px',
-                    background: '#f9fafb',
-                    border: '1px solid #e5e7eb',
-                    borderRadius: '8px'
-                  }}>
-                    <div style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      marginBottom: getGroupType() ? '12px' : 0
-                    }}>
-                      <span style={{ fontSize: '14px', fontWeight: 500, color: '#6b7280' }}>
-                        Всего товаров в группе
-                      </span>
-                      <span style={{ fontSize: '16px', fontWeight: 600, color: '#111827' }}>
-                        {getTotalProductsInGroup()} {getTotalProductsInGroup() === 1 ? 'товар' : getTotalProductsInGroup() < 5 ? 'товара' : 'товаров'}
-                      </span>
-                    </div>
-                    
-                    {getGroupType() && (
-                      <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '8px'
-                      }}>
-                        <span style={{ fontSize: '14px', fontWeight: 500, color: '#6b7280' }}>
-                          Тип группы:
-                        </span>
-                        <span style={{
-                          padding: '4px 10px',
-                          borderRadius: '6px',
-                          fontSize: '12px',
-                          fontWeight: 600,
-                          background: getGroupType() === 'single' ? '#d1fae5' : '#fef3c7',
-                          color: getGroupType() === 'single' ? '#065f46' : '#92400e',
-                          border: `1px solid ${getGroupType() === 'single' ? '#10a37f' : '#f59e0b'}`
-                        }}>
-                          {getGroupType() === 'single' ? '✓ Одноцветная группа' : '⚠ Мультицветная группа'}
-                        </span>
-                        {getGroupType() === 'multi' && (
-                          <span style={{ fontSize: '12px', color: '#6b7280' }}>
-                            ({getUniqueColors().join(', ')})
-                          </span>
-                        )}
-                      </div>
-                    )}
-                  </div>
+
 
                   {/* Multi-color Warning */}
                   {getGroupType() === 'multi' && (
@@ -3483,6 +3472,276 @@ function ImportKIZ() {
           >
             <X size={16} />
           </button>
+        </div>
+      )}
+
+      {/* Voice Settings Modal */}
+      {showVoiceSettings && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'rgba(0, 0, 0, 0.5)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 4000
+        }}
+        onClick={() => setShowVoiceSettings(false)}
+        >
+          <div style={{
+            background: '#fff',
+            borderRadius: '16px',
+            padding: '32px',
+            maxWidth: '500px',
+            width: '90%',
+            maxHeight: '80vh',
+            overflow: 'auto',
+            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)'
+          }}
+          onClick={(e) => e.stopPropagation()}
+          >
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              marginBottom: '24px'
+            }}>
+              <h3 style={{
+                fontSize: '20px',
+                fontWeight: 600,
+                color: '#111827',
+                margin: 0,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px'
+              }}>
+                <Sparkles size={24} style={{ color: '#7367F0' }} />
+                Настройки голоса
+              </h3>
+              <button
+                onClick={() => setShowVoiceSettings(false)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  padding: '8px',
+                  borderRadius: '8px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#6b7280',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = '#f3f4f6';
+                  e.currentTarget.style.color = '#111827';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'none';
+                  e.currentTarget.style.color = '#6b7280';
+                }}
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Enable/Disable Voice */}
+            <div style={{
+              marginBottom: '24px',
+              padding: '16px',
+              background: '#f9fafb',
+              borderRadius: '12px',
+              border: '1px solid #e5e7eb'
+            }}>
+              <label style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                cursor: 'pointer'
+              }}>
+                <span style={{
+                  fontSize: '14px',
+                  fontWeight: 500,
+                  color: '#374151'
+                }}>
+                  Включить голосовые уведомления
+                </span>
+                <input
+                  type="checkbox"
+                  checked={voiceEnabled}
+                  onChange={(e) => setVoiceEnabled(e.target.checked)}
+                  style={{
+                    width: '20px',
+                    height: '20px',
+                    cursor: 'pointer',
+                    accentColor: '#7367F0'
+                  }}
+                />
+              </label>
+            </div>
+
+            {/* Voice Selection */}
+            {voiceEnabled && (
+              <>
+                <div style={{ marginBottom: '16px' }}>
+                  <label style={{
+                    display: 'block',
+                    fontSize: '14px',
+                    fontWeight: 500,
+                    color: '#374151',
+                    marginBottom: '8px'
+                  }}>
+                    Выберите голос
+                  </label>
+                  <select
+                    value={selectedVoice}
+                    onChange={(e) => setSelectedVoice(e.target.value)}
+                    style={{
+                      width: '100%',
+                      padding: '12px',
+                      border: '1px solid #d1d5db',
+                      borderRadius: '8px',
+                      fontSize: '14px',
+                      color: '#374151',
+                      background: '#fff',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    {availableVoices.length === 0 && (
+                      <option>Загрузка русских голосов...</option>
+                    )}
+                    {availableVoices.map((voice) => (
+                      <option key={voice.voiceURI} value={voice.name}>
+                        {voice.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Test Voice Button */}
+                <button
+                  onClick={() => speakNotification('Файл успешно загружен')}
+                  style={{
+                    width: '100%',
+                    padding: '12px',
+                    background: 'linear-gradient(135deg, #7367F0 0%, #6355D9 100%)',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                    fontSize: '14px',
+                    fontWeight: 500,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    transition: 'all 0.2s'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-1px)';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(115, 103, 240, 0.3)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
+                >
+                  <Sparkles size={16} />
+                  Тестировать голос
+                </button>
+              </>
+            )}
+
+            {/* Info */}
+            <div style={{
+              marginTop: '24px',
+              padding: '12px',
+              background: '#eff6ff',
+              borderRadius: '8px',
+              border: '1px solid #dbeafe'
+            }}>
+              <p style={{
+                fontSize: '13px',
+                color: '#1e40af',
+                margin: 0,
+                lineHeight: '1.5'
+              }}>
+                💡 Голосовые уведомления будут произноситься после успешной загрузки всех файлов
+              </p>
+              <p style={{
+                fontSize: '12px',
+                color: '#1e40af',
+                margin: '6px 0 0 0',
+                lineHeight: '1.5'
+              }}>
+                🔇 При включении голоса звуковые эффекты (beep) автоматически отключаются
+              </p>
+            </div>
+
+            {/* Alice Voice Info */}
+            {!availableVoices.some(v => v.name.toLowerCase().includes('alice') || v.name.toLowerCase().includes('алис')) && (
+              <div style={{
+                marginTop: '16px',
+                padding: '12px',
+                background: '#fef3c7',
+                borderRadius: '8px',
+                border: '1px solid #fde68a'
+              }}>
+                <p style={{
+                  fontSize: '13px',
+                  color: '#92400e',
+                  margin: 0,
+                  lineHeight: '1.5',
+                  fontWeight: 500
+                }}>
+                  🎤 Голос Алисы от Яндекса
+                </p>
+                <p style={{
+                  fontSize: '12px',
+                  color: '#92400e',
+                  margin: '4px 0 0 0',
+                  lineHeight: '1.5'
+                }}>
+                  Для использования голоса Алисы откройте эту страницу в <strong>Яндекс.Браузере</strong>. 
+                  В других браузерах доступны системные голоса вашей ОС.
+                </p>
+              </div>
+            )}
+
+            {/* Available Voices Info */}
+            {availableVoices.length > 0 && (
+              <div style={{
+                marginTop: '16px',
+                padding: '12px',
+                background: '#f0fdf4',
+                borderRadius: '8px',
+                border: '1px solid #bbf7d0'
+              }}>
+                <p style={{
+                  fontSize: '13px',
+                  color: '#166534',
+                  margin: 0,
+                  lineHeight: '1.5',
+                  fontWeight: 500
+                }}>
+                  ✅ Найдено {availableVoices.length} {availableVoices.length === 1 ? 'голос' : availableVoices.length < 5 ? 'голоса' : 'голосов'}
+                </p>
+                {availableVoices.some(v => v.name.toLowerCase().includes('alice') || v.name.toLowerCase().includes('алис')) && (
+                  <p style={{
+                    fontSize: '12px',
+                    color: '#166534',
+                    margin: '4px 0 0 0',
+                    lineHeight: '1.5'
+                  }}>
+                    🎉 Голос Алисы доступен!
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>

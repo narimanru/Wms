@@ -55,55 +55,55 @@ function TopNavigation() {
     {
       id: 'dashboard',
       label: 'Главная',
-      icon: <LayoutDashboard />,
+      icon: <LayoutDashboard strokeWidth={1.5} size={20} />,
       path: '/'
     },
     {
       id: 'products',
       label: 'Товары',
-      icon: <ShoppingCart />,
+      icon: <ShoppingCart strokeWidth={1.5} size={20} />,
       path: '/products'
     },
     {
       id: 'marking',
       label: 'Маркировка',
-      icon: <Tag />,
+      icon: <Tag strokeWidth={1.5} size={20} />,
       path: '/marking'
     },
     {
       id: 'inventory',
       label: 'Честный знак',
-      icon: <Package />,
+      icon: <Package strokeWidth={1.5} size={20} />,
       path: '/inventory',
       children: [
         {
           id: 'inventory-main',
           label: 'Товар и КИЗы',
-          icon: <Package />,
+          icon: <Package strokeWidth={1.5} size={18} />,
           path: '/inventory'
         },
         {
           id: 'wizard',
           label: 'Загрузка КИЗов',
-          icon: <Upload />,
+          icon: <Upload strokeWidth={1.5} size={18} />,
           path: '/wizard'
         },
         {
           id: 'history',
           label: 'История загрузок',
-          icon: <FileText />,
+          icon: <FileText strokeWidth={1.5} size={18} />,
           path: '/history'
         },
         {
           id: 'transfer',
           label: 'Перенос КИЗов',
-          icon: <ArrowRightLeft />,
+          icon: <ArrowRightLeft strokeWidth={1.5} size={18} />,
           path: '/transfer'
         },
         {
           id: 'upd',
           label: 'Работа с УПД',
-          icon: <FileCheck />,
+          icon: <FileCheck strokeWidth={1.5} size={18} />,
           path: '/upd'
         }
       ]
@@ -111,43 +111,43 @@ function TopNavigation() {
     {
       id: 'production',
       label: 'Производство',
-      icon: <Factory />,
+      icon: <Factory strokeWidth={1.5} size={20} />,
       path: '/production-orders'
     },
     {
       id: 'partners',
       label: 'Партнёры',
-      icon: <Users />,
+      icon: <Users strokeWidth={1.5} size={20} />,
       path: '/seller/partners'
     },
     {
       id: 'ai',
       label: 'AI помощник',
-      icon: <Sparkles />,
+      icon: <Sparkles strokeWidth={1.5} size={20} />,
       path: '/ai',
       children: [
         {
           id: 'ai-hub',
           label: 'AI Хаб',
-          icon: <Sparkles />,
+          icon: <Sparkles strokeWidth={1.5} size={18} />,
           path: '/ai'
         },
         {
           id: 'ai-analytics',
           label: 'AI Аналитика',
-          icon: <TrendingUp />,
+          icon: <TrendingUp strokeWidth={1.5} size={18} />,
           path: '/ai/analytics'
         },
         {
           id: 'ai-shipment-check',
           label: 'Проверка поставок',
-          icon: <CheckSquare />,
+          icon: <CheckSquare strokeWidth={1.5} size={18} />,
           path: '/ai/shipment-check'
         },
         {
           id: 'ai-kiz-vault',
           label: 'Банк КИЗ',
-          icon: <Vault />,
+          icon: <Vault strokeWidth={1.5} size={18} />,
           path: '/ai/kiz-vault'
         }
       ]
@@ -155,31 +155,31 @@ function TopNavigation() {
     {
       id: 'planner',
       label: 'AI Планировщик',
-      icon: <Calendar />,
+      icon: <Calendar strokeWidth={1.5} size={20} />,
       path: '/planner',
       children: [
         {
           id: 'planner-dashboard',
           label: 'Панель',
-          icon: <Calendar />,
+          icon: <Calendar strokeWidth={1.5} size={18} />,
           path: '/planner'
         },
         {
           id: 'planner-shipments',
           label: 'План отгрузок WB',
-          icon: <Package />,
+          icon: <Package strokeWidth={1.5} size={18} />,
           path: '/planner/shipments'
         },
         {
           id: 'planner-production',
           label: 'План производства',
-          icon: <Factory />,
+          icon: <Factory strokeWidth={1.5} size={18} />,
           path: '/planner/production'
         },
         {
           id: 'planner-kiz',
           label: 'План КИЗ',
-          icon: <Tag />,
+          icon: <Tag strokeWidth={1.5} size={18} />,
           path: '/planner/kiz'
         }
       ]

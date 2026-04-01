@@ -68,7 +68,7 @@ function UPDWork() {
           </p>
           <button className="upd-empty__btn">
             <Upload className="w-5 h-5" />
-            Загр��зить УПД
+            Загрузить УПД
           </button>
         </div>
       </div>
